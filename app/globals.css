@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Primary brand token - hex allowed by spec */
+    --primary-hex: #FF5A5F;
+    /* HSL tokens for Tailwind consumption */
+    --primary: 357 100% 67%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Semantic palette (no other hex values used) */
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 100%;
+
+    --accent: 357 100% 74%;
+    --accent-foreground: 0 0% 100%;
+
+    --background: 0 0% 100%;
+    --surface: 0 0% 98%;
+
+    --neutral: 0 0% 40%;
+    --neutral-foreground: 0 0% 98%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 96%;
+    --ring: 357 100% 67%;
+  }
+
+  html, body {
+    height: 100%;
+    background-color: hsl(var(--background));
+    color: hsl(var(--secondary));
+  }
+
+  body {
+    font-feature-settings: "ss01", "cv01", "cv02";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .safe-p {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+  .safe-pt {
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+  .safe-pb {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+  .brand-gradient {
+    background-image: radial-gradient(120% 120% at 0% 0%, hsl(var(--accent)/0.2) 0%, transparent 60%), linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+  }
+  .card {
+    @apply rounded-lg bg-surface shadow-soft border border-border;
+  }
+  .focus-ring {
+    @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+}
